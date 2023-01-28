@@ -4,7 +4,7 @@ Simon is an electronic game of memory skill in which players must repeat a seque
 
 ## How to Play
 
-- Press the colored buttons in the same sequence as the device generated. 
+- Press the colored buttons in the same sequence as the game generated. 
 - If the player successfully repeats the sequence, the game will add one more color/tone to the sequence and the player must repeat the new longer sequence. 
 - The game continues until the player makes a mistake and fails to repeat the correct sequence.
 
