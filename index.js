@@ -3,6 +3,7 @@ userClickedPattern =[]
 buttonColours =["red", "blue", "green", "yellow"]
 var level = 0;
 var gameStarted = false;
+var highScore = 0;
 
 function nextSequence(){
     level++;
@@ -11,7 +12,7 @@ function nextSequence(){
     var randomChosenColour = buttonColours[randomNumber];
     gamePattern.push(randomChosenColour);
     console.log(gamePattern);
-    // playSound(randomChosenColour);
+    playSound(randomChosenColour);
     $("#"+randomChosenColour).fadeOut(100).fadeIn(100);
 }
 
@@ -54,9 +55,30 @@ function checkAnswer(currentClickIndex) {
     }
     else {
         console.log("wrong");
+        playSound("wrong");
+        $("body").addClass("game-over");
+        setTimeout(function(){
+            $("body").removeClass("game-over");
+        }, 200);
+        $("h1").text("Game Over, Press Any Key to Restart")
+        startOver()
     }
-
 }
+
+function startOver(){
+    userClickedPattern = [];
+    gamePattern = [];
+    if(level>highScore){
+        highScore = level;
+    }
+    level = 0;
+    gameStarted = false;
+    $("#high-score").text("High Score: " + highScore);
+}
+
+$(document).ready(function(){
+    $("#high-score").text("High Score: " + highScore);
+});
 
 $(document).keydown(function(){
     if(!gameStarted){
